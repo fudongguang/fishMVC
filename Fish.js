@@ -1,7 +1,7 @@
 /**
  * Created with IntelliJ IDEA.
  * User: fudongguang
- * Date: 14-2-18
+ * Date: 14-2-10
  * Time: AM11:40
  * 思路：当跳到一个上下左右都不能走的点就从起点重新跳。
  */
@@ -417,5 +417,5 @@
 	Module.extend=View.extend = extend;
 
 	$.extend(Module.prototype, Events);
-	window.FishMvc = Fish;
+	window.FishMVC = Fish;
 })();

@@ -19,18 +19,22 @@ asyncTest("cookieLocal", function () {
 
 var IndexController_init;
 
-var IndexController = FishMvc.View.extend({
+var IndexController = FishMVC.View.extend({
+	//初始运行函数
 	init:function(){
 		IndexController_init=1;
 	},
 
+	//元素预绑定
 	elements:{
-		'#idSelecter':'idSelecter',
-		'.classSelecter':'classSelecter',
-		'hr':'tagSelecter',
-		'.refreshEl':'refreshEl_rel'
+		'#idSelecter':'idSelecter',//id绑定
+		'.classSelecter':'classSelecter',//类绑定
+		'hr':'tagSelecter',//标签绑定
+		'.refreshEl':'refreshEl_rel'//预先约定绑定
 	},
 
+
+	//事件预定义
 	events:{
 		'click idSelecter':'doIdSelecter'
 	},
@@ -92,7 +96,6 @@ test('testClickIdSelecter',function(){
 //测试rel元素 依赖《测试click》
 setTimeout(function(){
 	test('testREL',function(){
-		console.log(indexController.refreshEl_rel);
 		equal({}.toString.call(indexController.refreshEl_rel),'[object Function]');
 		equal(indexController.refreshEl,undefined);
 		var a = indexController.refreshEl_rel();
@@ -115,7 +118,7 @@ test('test_view_include',function(){
 
 /******** module 测试 start ********/
 
-var TestModule = FishMvc.Module.extend({initTest:'test'});
+var TestModule = FishMVC.Module.extend({initTest:'test'});
 var testModule = new TestModule();
 
 //测试初始化扩展
@@ -159,4 +162,19 @@ test('Module_del',function(){
 	equal(testModule.get('sex'),undefined);
 });
 
+
 /******** module 测试 end ********/
+
+
+/***** 文档测试 *******/
+
+var Person = FishMVC.Module.extend({getName:function(){return 'peter'}});
+var person = new Person();
+console.log(person.getName()); // peter
+var NewPerson = FishMVC.Module.extend();
+var newPerson = new NewPerson();
+console.log(newPerson.getName); // undefined
+
+person.set({userName:'peter'});
+
+

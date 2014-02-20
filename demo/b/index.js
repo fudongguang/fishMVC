@@ -1,5 +1,5 @@
 /**
- * Created by fudongguang on 14-2-18.
+ * Created by fudongguang on 14-2-10.
  */
 
 var A={a:'a',b:'b'};
