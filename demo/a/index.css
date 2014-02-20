@@ -1,0 +1,62 @@
+@charset "utf-8";
+
+body, html, ul, li, dt, dl, dd, h1, h2, h3, h4, p {
+	padding: 0;
+	margin: 0;
+}
+
+html, body {
+	height: 100%;
+}
+
+img {
+	border: 0;
+}
+
+ul {
+	list-style: none;
+}
+
+body {
+	background-color: #fff;
+	font: 26px Microsoft YaHei, arial, helvetica, verdana, tahoma, sans-serif;
+	color: #858585;
+}
+
+a {
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.box {
+	display: -webkit-box;
+}
+
+.orange {
+	color: #eb4615;
+}
+
+.center {
+	text-align: center;
+}
+
+.clear {
+	clear: both;
+}
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+}
+
+.middle {
+	vertical-align: middle;
+}
+
+.wrapper {
+	width: 640px;
+	margin: auto;
+}

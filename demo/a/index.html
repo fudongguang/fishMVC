@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8"/>
+    <meta content="width=640, target-densitydpi=320, user-scalable=0" name="viewport"/>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="index.css"/>
+    <script type="text/javascript" src="http://static.koudai.com/h5/js/viewport.js"></script>
+    <script type="text/javascript" src="../../zepto.min.js"></script>
+    <script type="text/javascript" src="../../Fish.js"></script>
+    <script type="text/javascript" src="index.js"></script>
+</head>
+<body>
+
+<div class="wrapper" id="wrapper">
+    <div id="idSelecter">idSelecter<a id="testEl">ss</a> </div>
+    <div class="classSelecter">classSelecter1</div>
+    <div class="classSelecter">classSelecter2</div>
+    <hr>tagSelecter1</hr>
+    <hr>tagSelecter2</hr>
+</div>
+
+
+<link rel="stylesheet" type="text/css" href="http://test.m.koudai.com/html/qunit/qunit.css"/>
+<style type="text/css">
+    #QunitTestDriverDiv {
+        position: absolute;
+        left: -99.3%;
+        top: 0;
+        width: 100%;
+        z-index: 100000;
+    }
+
+    #QunitTestDriverDiv:hover {
+        left: 0;
+    }
+</style>
+<div id="QunitTestDriverDiv">
+    <div id="qunit"></div>
+    <div id="qunit-fixture"></div>
+</div>
+
+
+<script type="text/javascript" src="http://test.m.koudai.com/html/qunit/qunit.js"></script>
+<script type="text/javascript" src="test.js"></script>
+
+</body>
+</html>
