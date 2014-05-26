@@ -21,45 +21,45 @@ var IndexController_init;
 
 var IndexController = FishMVC.View.extend({
 	//初始运行函数
-	init:function(){
-		IndexController_init=1;
+	init: function () {
+		IndexController_init = 1;
 	},
 
 	//元素预绑定
-	elements:{
-		'#idSelecter':'idSelecter',//id绑定
-		'.classSelecter':'classSelecter',//类绑定
-		'hr':'tagSelecter',//标签绑定
-		'.refreshEl':'refreshEl_rel'//预先约定绑定
+	elements: {
+		'#idSelecter': 'idSelecter',//id绑定
+		'.classSelecter': 'classSelecter',//类绑定
+		'hr': 'tagSelecter',//标签绑定
+		'.refreshEl': 'refreshEl_rel'//预先约定绑定
 	},
 
 
 	//事件预定义
-	events:{
-		'click idSelecter':'doIdSelecter'
+	events: {
+		'click idSelecter': 'doIdSelecter'
 	},
 
-	doIdSelecter:function(){
-		this.el.append('<div class="refreshEl">refreshEl</div>');
+	doIdSelecter: function () {
+		this.el.append('<div class="refreshEl" style="color:red;position: absolute;right: 0;top:0;">refreshEl</div>');
 	}
 });
 
-var indexController = new IndexController();
-var indexControllera = new IndexController({el:$('#idSelecter')});
+var indexController = new IndexController({el: $('#wrapper')});
+var indexControllera = new IndexController({el: $('#idSelecter')});
 
 //测试初始化函数
-test('IndexController_init',function(){
-	equal(IndexController_init,1);
+test('IndexController_init', function () {
+	equal(IndexController_init, 1);
 });
 
 //测试id选择器
-test('idSelecter',function(){
+test('idSelecter', function () {
 	var t = $('#idSelecter').text();
-	equal(indexController.idSelecter.text(),t);
+	equal(indexController.idSelecter.text(), t);
 });
 
 //测试类选择器
-test('classSelecter',function(){
+test('classSelecter', function () {
 	var a = $('.classSelecter');
 	var b = indexController.classSelecter;
 
@@ -69,7 +69,7 @@ test('classSelecter',function(){
 });
 
 //测试tag选择器
-test('tagSelecter',function(){
+test('tagSelecter', function () {
 	var a = $('hr');
 	var b = indexController.tagSelecter;
 
@@ -78,88 +78,83 @@ test('tagSelecter',function(){
 });
 
 //测试el是否正确
-test('testEl',function(){
+test('testEl', function () {
 	var a = indexController.el[0].tagName;
 	var b = indexControllera.el[0].tagName;
-	equal(a.toLowerCase(),'body');
-	equal(b.toLocaleLowerCase(),'div');
+	equal(a.toLowerCase(), 'div');
+	equal(b.toLocaleLowerCase(), 'div');
 });
 
 
 //测试click 这个和《测试rel元素》的顺序不能反
-test('testClickIdSelecter',function(){
+test('testClickIdSelecter', function () {
 	$('.refreshEl').remove();
-	indexController.idSelecter.trigger('click');
-	equal($('.refreshEl').length,1);
+	indexController.doIdSelecter();
+	equal($('.refreshEl').length, 1);
 });
 
 //测试rel元素 依赖《测试click》
-setTimeout(function(){
-	test('testREL',function(){
-		equal({}.toString.call(indexController.refreshEl_rel),'[object Function]');
-		equal(indexController.refreshEl,undefined);
-		var a = indexController.refreshEl_rel();
-		equal(a[0].innerText,'refreshEl');
-		equal(indexController.refreshEl[0].innerText,'refreshEl');
-	});
-},10);
+test('testREL', function () {
+	equal({}.toString.call(indexController.refreshEl_rel), '[object Function]');
+	equal(indexController.refreshEl, undefined);
+	var a = indexController.refreshEl_rel();
+	equal(a[0].innerText, 'refreshEl');
+	equal(indexController.refreshEl[0].innerText, 'refreshEl');
+});
 
 //测试view.include
-test('test_view_include',function(){
-	var a={testInclude:'d'};
+test('test_view_include', function () {
+	var a = {testInclude: 'd'};
 	indexController.include(a);
-	equal(indexController.testInclude,'d');
+	equal(indexController.testInclude, 'd');
 });
 
 /******** view 测试 end ********/
 
 
-
-
 /******** module 测试 start ********/
 
-var TestModule = FishMVC.Module.extend({initTest:'test'});
+var TestModule = FishMVC.Module.extend({initTest: 'test'});
 var testModule = new TestModule();
 
 //测试初始化扩展
-test('Module_initTest',function(){
-	equal(testModule.initTest,'test');
+test('Module_initTest', function () {
+	equal(testModule.initTest, 'test');
 });
 
 var changSexTest;
-testModule.on('change:sex',function(context,val){
-	changSexTest=val;
+testModule.on('change:sex', function (context, val) {
+	changSexTest = val;
 });
 
 //测试change和set和get功能
-test('Module_change_and_set',function(){
-	testModule.set({sex:'nv'});
-	equal(changSexTest,'nv');
-	equal(testModule.get('sex'),'nv');
+test('Module_change_and_set', function () {
+	testModule.set({sex: 'nv'});
+	equal(changSexTest, 'nv');
+	equal(testModule.get('sex'), 'nv');
 });
 
 //测试del功能
-test('Module_del',function(){
+test('Module_del', function () {
 	testModule.del('sex');
-	equal(testModule.get('sex'),undefined);
+	equal(testModule.get('sex'), undefined);
 });
 
 //测试静默功能
-test('Module_silent',function(){
-	testModule.set({sex:'nv'});
-	equal(testModule.get('sex'),'nv');
-	testModule.set({sex:'nan'},{silent:true});
-	equal(changSexTest,'nv');
-	equal(testModule.get('sex'),'nan');
+test('Module_silent', function () {
+	testModule.set({sex: 'nv'});
+	equal(testModule.get('sex'), 'nv');
+	testModule.set({sex: 'nan'}, {silent: true});
+	equal(changSexTest, 'nv');
 });
 
 //测试unset功能
-test('Module_del',function(){
-	testModule.set({sex:'nv'});
-	equal(testModule.get('sex'),'nv');
-	testModule.set({sex:'nan'},{del:true});
-	equal(changSexTest,undefined);
-	equal(testModule.get('sex'),undefined);
+test('Module_del', function () {
+	testModule.set({sex: 'nv'});
+	equal(testModule.get('sex'), 'nv');
+	testModule.set({sex: 'nan'}, {del: true});
+	equal(changSexTest, undefined);
+	equal(testModule.get('sex'), undefined);
 });
 
 
@@ -168,13 +163,13 @@ test('Module_del',function(){
 
 /***** 文档测试 *******/
 
-var Person = FishMVC.Module.extend({getName:function(){return 'peter'}});
+var Person = FishMVC.Module.extend({getName: function () {
+	return 'peter'
+}});
 var person = new Person();
-console.log(person.getName()); // peter
 var NewPerson = FishMVC.Module.extend();
 var newPerson = new NewPerson();
-console.log(newPerson.getName); // undefined
 
-person.set({userName:'peter'});
+person.set({userName: 'peter'});
 
 

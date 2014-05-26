@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8"/>
+    <meta content="width=640, target-densitydpi=320, user-scalable=0" name="viewport"/>
+    <script type="text/javascript" src="http://item.koudai.com/js/jquery.js"></script>
+
+    <style type="text/css">
+        .wrapper {
+            width: 700px;
+            margin: auto;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+
+<div class="wrapper">
+    <ul id="ddDest">
+        <li>第 1 行</li>
+    </ul>
+
+    <a href="#" id="dd">增加一行</a>
+</div>
+
+
+<script type="text/javascript">
+    var i = 1;
+    $('#dd').click(function () {
+        i++;
+        var str = '<li>第 ' + i + ' 行</li>';
+        $('#ddDest').append(str);
+
+        return false;
+    });
+
+    var tempFun = function (target) {
+        alert('您点击了' + $(target).text());
+    };
+
+    $('#ddDest li').live('click', function () {
+        tempFun(this)
+    });
+
+
+    alert($('ul',$(document.body)).length);
+
+</script>
+
+</body>
+</html>
