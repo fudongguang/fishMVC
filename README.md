@@ -48,6 +48,8 @@
     </script>
 实例化IndexController，传递的对象el属性标示元素选择范围。
 
+
+
     <script type="text/html">
         init: function () {
          },
@@ -65,8 +67,8 @@ init函数为初始化函数，实例化后立即执行。
 
 elements对象的属性为需要绑定的元素，``'#country': 'country'``表明实例化的对象拥有country这个属性，该属性缓存了id为country元素，即：``this.country = $('#country')``
 
-
 如果是未来元素需要在属性名称后加上_rel,比如：``'#country': 'country_rel'``,未来元素调用的方法为``this['country_rel']()``,调用一次后
+
 
 
 	<script type="text/html">
@@ -76,6 +78,8 @@ elements对象的属性为需要绑定的元素，``'#country': 'country'``表�
         }
     </script>
 events对象集合了所有dom元素要绑定的方法，``'change country': 'doCountry'``，change：事件名称，country：触发事件的元素，这里是this.country，doCountry：绑定的方法
+
+
 
 	<script type="text/html">
         doCountry:function(target){
