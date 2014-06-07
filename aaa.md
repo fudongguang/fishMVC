@@ -1,7 +1,6 @@
-# FishMVC
+# artTemplate-3.0
 
-简单的MVC架构，大幅提高开发效率和维护成本。
-依赖jquery或zepto
+新一代 javascript 模板引擎
 
 ##	目录
 
@@ -11,63 +10,45 @@
 *	[下载](#下载)
 *	[方法](#方法)
 *	[NodeJS](#nodejs)
+*	[使用预编译](#使用预编译)
+*	[更新日志](#更新日志)
+*	[授权协议](#授权协议)
 
 ##	特性
 
-1.	元素预绑定
-2.	方法预绑定
-3.	元素预定义
+1.	性能卓越，执行速度通常是 Mustache 与 tmpl 的 20 多倍（[性能测试](http://aui.github.com/artTemplate/test/test-speed.html)）
+2.	支持运行时调试，可精确定位异常模板所在语句（[演示](http://aui.github.io/artTemplate/demo/debug.html)）
+3.	对 NodeJS Express 友好支持
+4.	安全，默认对输出进行转义、在沙箱中运行编译后的代码（Node版本可以安全执行用户上传的模板）
+5.	支持``include``语句，可在浏览器端实现按路径加载模板
+6.	支持预编译，可将模板转换成为非常精简的 js 文件
+7.	模板语句简洁，无需前缀引用数据
+8.	支持所有流行的浏览器
 
 ## 快速上手
 
 
-### 书写方式
+### 编写模板
+
+使用一个``type="text/html"``的``script``标签存放模板：
 	
-	<script type="text/html">
-        var IndexController = FishMVC.View.extend({
-            init: function () {
-            },
-            elements: {
-                '#country': 'country',
-                '#countryCode': 'countryCode',
-                '#loginBtn' : 'login',
-                '#weidianPhone':'phone'
-            },
-            events: {
-                'change country': 'doCountry',
-                'click login':'doLogin'
-            },
-            doCountry:function(target){
-            },
-            doLogin: function(){
-            }
-        });
-	var indexController = new IndexController({el: $('.wrapper')});
+	<script id="test" type="text/html">
+	<h1>{{title}}</h1>
+	<ul>
+	    {{each list as value i}}
+	        <li>索引 {{i + 1}} ：{{value}}</li>
+	    {{/each}}
+	</ul>
 	</script>
 
-### 使用方法
-    <script  type="text/html">
-        var indexController = new IndexController({el: $('.wrapper')});
-    </script>
-
-    实例化IndexController，传递的对象el属性标示元素选择范围。
-
-    <script type="text/html">
-        init: function () {
-         },
-    </script>
-	init函数为初始化函数，实例化后立即执行。
-
-    <script type="text/html">
-        elements: {
-            '#country': 'country',
-            '#countryCode': 'countryCode',
-            '#loginBtn' : 'login',
-            '#weidianPhone':'phone'
-        }
-    </script>
-
-	elements对象的属性为需要绑定的元素，``'#country': 'country'``表明实例化的对象拥有country这个属性，该属性缓存了id为country元素，即：``this.country = $('#country')``
+### 渲染模板
+	
+	var data = {
+		title: '标签',
+		list: ['文艺', '博客', '摄影', '电影', '民谣', '旅行', '吉他']
+	};
+	var html = template('test', data);
+	document.getElementById('content').innerHTML = html;
 
 
 [演示](http://aui.github.com/artTemplate/demo/basic.html)
