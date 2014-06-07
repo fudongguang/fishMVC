@@ -64,7 +64,9 @@ init函数为初始化函数，实例化后立即执行。
     </script>
 
 elements对象的属性为需要绑定的元素，``'#country': 'country'``表明实例化的对象拥有country这个属性，该属性缓存了id为country元素，即：``this.country = $('#country')``
-*	如果是未来元素需要在属性名称后加上_rel,比如：``'#country': 'country_rel'``,未来元素调用的方法为``this['country_rel']()``,调用一次后
+
+
+如果是未来元素需要在属性名称后加上_rel,比如：``'#country': 'country_rel'``,未来元素调用的方法为``this['country_rel']()``,调用一次后
 
 
 	<script type="text/html">
