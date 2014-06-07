@@ -85,4 +85,4 @@ events对象集合了所有dom元素要绑定的方法，``'change country': 'do
         doCountry:function(target){
         }
     </script>
-为要绑定的方法，target为事件触发的对象，必须要表明的是，该方法this作用域指向的是实例对象。
+doCountry为要绑定的方法，target为事件触发的对象，必须要表明的是，该方法this作用域指向的是实例对象。
