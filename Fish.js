@@ -197,14 +197,11 @@
 	};
 
 
-
-
 	//视图对象
 	var View = Fish.View = function (includes) {
 		this.initializer.apply(this, arguments);
 		this.init.apply(this, arguments);
 		this.fn = this.constructor.prototype;
-
 	};
 
 
@@ -249,6 +246,9 @@
 				var tempethod = this.proxy(this[methodName]);
 				var method = (function(tempethod){
 					return function(event){
+						if(!tempethod){
+							console.log('未找到方法');
+						}
 						tempethod($(this),event);
 					};
 				}(tempethod));
@@ -264,7 +264,7 @@
 					}
 
 					if(this[selector] && this[selector].length){
-						this.el.delegate(this[selector] ? this[selector] : selector, eventName, method);
+						this.el.delegate((this[selector] && this[selector]['selector']) ? this[selector]['selector'] : selector, eventName, method);
 					}
 				}
 			}
