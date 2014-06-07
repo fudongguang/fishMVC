@@ -46,7 +46,7 @@
     <script  type="text/html">
         var indexController = new IndexController({el: $('.wrapper')});
     </script>
-实例化IndexController，传递的对象el属性标示元素选择范围。
+实例化IndexController，传递的对象el属性标示元素选择范围，默认为document.body。
 
 
 
