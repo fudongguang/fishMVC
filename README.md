@@ -91,8 +91,12 @@ doCountry为要绑定的方法，target为事件触发的对象，必须要表�
 
 ### web新的结构
 
-服务端build地址：meitu-web/build.xml
-静态build地址：meitu-web/web/build/build.xml
+build地址：
+
+	<script type="build/html">
+        服务端build地址：meitu-web/build.xml
+        静态build地址：meitu-web/web/build/build.xml
+    </script>
 
 前端人员需要同时引入两个build文件，服务端开发人员只要引入服务端build
 
