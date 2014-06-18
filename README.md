@@ -86,3 +86,27 @@ events对象集合了所有dom元素要绑定的方法，``'change country': 'do
         }
     </script>
 doCountry为要绑定的方法，target为事件触发的对象，必须要表明的是，该方法this作用域指向的是实例对象。
+
+
+
+### web新的结构
+
+服务端build地址：meitu-web/build.xml
+静态build地址：meitu-web/web/build/build.xml
+
+前端人员需要同时引入两个build文件，服务端开发人员只要引入服务端build
+
+服务端build命令解析
+
+	<script type="build/html">
+        dist.product.war  生成线上环境war包
+        dist.test.war.and.optimize  生成测试环境war包
+        reinstall.test.for.front.dev  本地驱动服务器 *将vm虚拟机打开后直接点击此命令开启本地服务器，无须登录虚拟机
+        scp.to.test.server.and.deploy 将测试环境war包部署到测试环境
+    </script>
+    
+静态build命令解析
+	<script type="build/html">
+        develep  部署静态资源到测试环境，不优化代码
+        test  部署静态资源到测试环境，优化代码
+    </script>
