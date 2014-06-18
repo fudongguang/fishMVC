@@ -106,7 +106,10 @@ doCountry为要绑定的方法，target为事件触发的对象，必须要表�
     </script>
     
 静态build命令解析
+
 	<script type="build/html">
         develep  部署静态资源到测试环境，不优化代码
         test  部署静态资源到测试环境，优化代码
     </script>
+    
+    
