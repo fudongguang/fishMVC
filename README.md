@@ -105,8 +105,10 @@ build地址：
 	<script type="build/html">
         dist.product.war  生成线上环境war包
         dist.test.war.and.optimize  生成测试环境war包
-        reinstall.test.for.front.dev  本地驱动服务器 *将vm虚拟机打开后直接点击此命令开启本地服务器，无须登录虚拟机
+        reinstall.product.for.local.dev  本地启动服务器 *将vm虚拟机打开后直接点击此命令开启本地服务器，无须登录虚拟机  链接的是线上数据
+        reinstall.test.for.front.dev  本地启动服务器 *将vm虚拟机打开后直接点击此命令开启本地服务器，无须登录虚拟机 链接的是本地数据
         scp.to.test.server.and.deploy 将测试环境war包部署到测试环境
+        scp.to.test.server.and.deploy.for.windows  将测试环境war包部署到测试环境 *windows部署命令
     </script>
     
 静态build命令解析
@@ -115,5 +117,18 @@ build地址：
         develep  部署静态资源到测试环境，不优化代码
         test  部署静态资源到测试环境，优化代码
     </script>
+    
+    
+需要修改的服务端build配置
+
+    <script type="build/html">
+        <!-- 虚拟机中tomcat路径，请修改 -->
+        <property name="vm.tomcat.path" value="/mnt/hgfs/koudai-meitu/branch_4.5.3/tomcat-koudai" /> *虚拟机部署地址
+        <!-- 堡垒机账号密码，请修改 -->
+        <property name="baolei.user" value="yourname" /> *堡垒机账号
+        <property name="baolei.psw" value="yourpassword" /> *堡垒机密码
+    </script>
+    
+    
     
     
