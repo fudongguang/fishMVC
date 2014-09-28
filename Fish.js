@@ -241,32 +241,43 @@
 
 		delegateEvents: function () {
 			for (var key in this.events) {
-				var methodName = this.events[key];
+                var tempArr = this.events[key].split(',');
 
-				var tempethod = this.proxy(this[methodName]);
-				var method = (function(tempethod){
-					return function(event){
-						if(!tempethod){
-							console.log('未找到方法');
-						}
-						tempethod($(this),event);
-					};
-				}(tempethod));
+                for(var ii=0;ii<tempArr.length;ii++){
+                    var methodName = tempArr[ii];
+
+                    var tempethodA = (function(methodName){
+                        return function(target,event){
+                            return this[methodName](target,event);
+                        }
+                    }(methodName));
+
+                    var tempethod = this.proxy(tempethodA);
+                    var method = (function(tempethod){
+                        return function(event){
+                            if(!tempethod){
+                                console.log('未找到方法');
+                            }
+
+                            return tempethod($(this),event);
+                        };
+                    }(tempethod));
 
 
-				var match = key.match(this.eventSplitter);
-				var eventName = match[1], selector = match[2];
-				if (selector === '') {
-					this.el.bind(eventName, method);
-				} else {
-					if (selector.search(/_rel$/) !== -1) {
-						selector = this[selector+'Selector'];
-					}
+                    var match = key.match(this.eventSplitter);
+                    var eventName = match[1], selector = match[2];
+                    if (selector === '') {
+                        this.el.bind(eventName, method);
+                    } else {
+                        if (selector.search(/_rel$/) !== -1) {
+                            selector = this[selector+'Selector'];
+                        }
 
-					if(this[selector] && this[selector].length){
-						this.el.delegate((this[selector] && this[selector]['selector']) ? this[selector]['selector'] : selector, eventName, method);
-					}
-				}
+                        if((this[selector] && this[selector].length) || selector){
+                            this.el.delegate((this[selector] && this[selector]['selector']) ? this[selector]['selector'] : selector, eventName, method);
+                        }
+                    }
+                }
 			}
 		},
 

@@ -36,19 +36,22 @@ var IndexController = FishMVC.View.extend({
 
 	//事件预定义
 	events: {
-		'click idSelecter': 'doIdSelecter'
+		'click idSelecter': 'doIdSelecter,kk'
 	},
 
 	doIdSelecter: function () {
-		alert('sdf');
+        alert('a');
 		this.el.append('<div class="refreshEl" style="color:red;position: absolute;right: 0;top:0;">refreshEl</div>');
-	}
+	},
+    kk:function(){
+        alert('doIdSelecter,kk')
+    }
 });
 
 var indexController = new IndexController({el: $('#wrapper')});
 
 
-if(1===2) {
+if(1===1) {
 
 //测试初始化函数
 	test('IndexController_init', function () {
@@ -83,9 +86,9 @@ if(1===2) {
 //测试el是否正确
 	test('testEl', function () {
 		var a = indexController.el[0].tagName;
-		var b = indexControllera.el[0].tagName;
+//		var b = indexControllera.el[0].tagName;
 		equal(a.toLowerCase(), 'div');
-		equal(b.toLocaleLowerCase(), 'body');
+//		equal(b.toLocaleLowerCase(), 'body');
 	});
 
 
