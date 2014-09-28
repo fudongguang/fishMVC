@@ -80,7 +80,8 @@ elements对象的属性为需要绑定的元素，``'#country': 'country'``表�
         }
     </script>
 events对象集合了所有dom元素要绑定的方法，``'change country': 'doCountry'``，change：事件名称，country：触发事件的元素，这里是this.country，doCountry：绑定的方法
-支持同事绑定多个方法，以“,”分割，按先后顺序执行。
+
+支持同时绑定多个方法，以“,”分割，按先后顺序执行。
 
 
 
