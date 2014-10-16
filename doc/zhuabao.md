@@ -1,0 +1,77 @@
+#手机抓包 mac 教程
+
+##步骤一
+
+下载charles，安装并打开
+
+
+##步骤二
+
+#####打开手机wi-fi选择面板，链接一个可用得wifi网络。
+
+<img src="http://guxunzixun.com/images/charles/3.jpeg" style="width:300px;">
+
+#####打开代理设置面板
+
+<img src="http://guxunzixun.com/images/charles/4.jpeg" style="width:300px;">
+
+选择手动-->服务器（自己电脑ip）-->端口（默认8888）
+
+此时charles会自动弹出对话问是否允许通过chales代理访问。点击allow。如果想默认允许任何用户访问，
+打开Access Control Settings面板，点击add按钮 增加 0.0.0.0/0，以后就不会有该对话了。
+
+
+##charles面板介绍
+
+<img src="http://guxunzixun.com/images/charles/9.png" style="width:500px;">
+
+
+<br/>
+##高级功能
+
+#####代理设置
+#####Preferences->Proxy Settings->proxies
+<img src="http://guxunzixun.com/images/charles/1.png" style="width:500px;">
+
+#####阻止cookie，cookie将不会发送给服务器，不影响浏览器中的cookie
+Tools->Block Cookies
+
+#####禁止缓存
+面板Tools->No Caching
+
+#####文件映射到本地
+在请求列表中选择要映射的文件右键点击->Map Local->选择本地文件
+
+<img src="http://guxunzixun.com/images/charles/5.png" style="width:500px;">
+
+注意query输入框，因为有些参数是随机的，这样输入*就能匹配映射。
+关闭/打开映射
+面板Tools->Map Local
+配置映射列表
+菜单Tools->Map Local
+
+#####远程映射
+面板Tools->Map Remote
+设置和本地差不多
+
+#####断点设置
+在请求列表中选择要中断的文件右键点击->Breakpoints->刷新页面->弹出断点对话
+
+* 请求对话
+
+<img src="http://guxunzixun.com/images/charles/6.png" style="width:500px;">
+
+* 返回对话
+
+<img src="http://guxunzixun.com/images/charles/7.png" style="width:500px;">
+
+
+#####网速模拟
+
+菜单Proxy->Throttle Settings->选中Enable Throtting
+
+<img src="http://guxunzixun.com/images/charles/8.png" style="width:500px;">
+
+Bandwidth（带宽）、Utilistation（利用百分比）、Round-trip（往返延迟）、MTU（字节）
+
+
