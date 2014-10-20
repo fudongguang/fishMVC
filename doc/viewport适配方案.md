@@ -68,7 +68,7 @@
     target-densitydpi = UI-width / device-width * window.devicePixelRatio * 160;
 
 这不多介绍了，有需求的可以
-<a href="http://www.cnblogs.com/plums/archive/2013/01/10/WebApp-fixed-width-layout-of-multi-terminal-adapter-since.html#!comments" target="_blank">查看介绍</a>
+<a href="http://www.cnblogs.com/plums/archive/2013/01/10/WebApp-fixed-width-layout-of-multi-terminal-adapter-since.html" target="_blank">查看介绍</a>
 
 
 ##三、新的适配方案
@@ -133,6 +133,7 @@ scale = document.body.offsetWidth/640
         <td><img src="http://guxunzixun.com/images/xiaomi1.png" alt="xiaomi1" style="width:200px;"/><br/>小米1 (2.3.5)</td>
         <td><img src="http://guxunzixun.com/images/xiaomi2.jpg" alt="xiaomi2" style="width:200px;"/><br/>小米2 (4.1)</td>
         <td><img src="http://guxunzixun.com/images/vivo.png" alt="vivo" style="width:200px;"/><br/>vivo x3t (4.2.1)</td>
+   </tr><tr>
         <td><img src="http://guxunzixun.com/images/htc.png" alt="htc" style="width:200px;"/><br/>htc Desire s510e (2.3.5)</td>
         <td><img src="http://guxunzixun.com/images/sanxingi905.jpg" alt="htc" style="width:200px;"/><br/>三星i905 (2.3)</td>
     </tr>
